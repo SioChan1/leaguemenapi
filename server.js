@@ -11,6 +11,17 @@ app.get("/api/welcome", (req, res) => {
     res.status(200).send({message: "Welcome to pain"});
 })
 
+mongoose.connect
+(
+    process.env.DBHOST,
+    {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    }
+).catch(error => console.log("QwQ it is not working, DB sad:" + error));
+
+mongoose.connection.once('open', () => console.log('It is working, owo'));
+
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, function(){
