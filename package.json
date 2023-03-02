@@ -4,8 +4,9 @@
   "description": "coursework",
   "main": "server.js",
   "scripts": {
-    "start-dev" : "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Renata",
   "license": "ISC",
@@ -16,5 +17,14 @@
     "express": "^4.18.2",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SioChan1/leaguemenapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SioChan1/leaguemenapi/issues"
+  },
+  "homepage": "https://github.com/SioChan1/leaguemenapi#readme"
 }
