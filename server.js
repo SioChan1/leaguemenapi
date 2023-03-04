@@ -6,6 +6,7 @@ const champion = require("./models/champion");
 const app = express("express");
 
 const championRoutes = require("./routes/champion");
+const authRoutes = require("./routes/auth");
 
 require("dotenv-flow").config();
 
@@ -28,6 +29,8 @@ app.get("/api/welcome", (req, res) => {
 })
 
 app.use("/api/champions", championRoutes);
+app.use("/api/user", authRoutes);
+
 
 const PORT = process.env.PORT || 4000;
 
