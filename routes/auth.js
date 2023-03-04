@@ -9,8 +9,6 @@ router.post("/register", async (req, res) => {
     if (error) {
         return res.status(400).json({error: error.details[0].message});
     }
-
-    return res.status(200).json({msg: "Reguster route..."});
 });
 
 router.post("/login", async (req, res) => {
