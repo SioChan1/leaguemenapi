@@ -9,10 +9,7 @@ const championRoutes = require("./routes/champion");
 
 require("dotenv-flow").config();
 
-app.get("/api/welcome", (req, res) => {
-
-    res.status(200).send({message: "Welcome to pain"});
-})
+app.use(bodyParser.json());
 
 mongoose.connect
 (
@@ -24,6 +21,11 @@ mongoose.connect
 ).catch(error => console.log("QwQ it is not working, DB sad:" + error));
 
 mongoose.connection.once('open', () => console.log('It is working, owo'));
+
+app.get("/api/welcome", (req, res) => {
+
+    res.status(200).send({message: "Welcome to pain"});
+})
 
 app.use("/api/champions", championRoutes);
 
