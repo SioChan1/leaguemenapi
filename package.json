@@ -15,10 +15,10 @@
     "cross-env": "^7.0.3",
     "dotenv-flow": "^3.2.0",
     "express": "^4.18.2",
+    "joi": "^17.8.3",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SioChan1/leaguemenapi.git"
