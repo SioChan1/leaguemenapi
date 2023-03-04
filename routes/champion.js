@@ -47,3 +47,23 @@ router.put("/:id", (req, res) => {
     id }); })
 
 });
+
+router.delete("/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    champion.findByIdAndDelete(id)
+    .then(data => { 
+        if (!data)
+        { 
+        res.status(404). send({ message: "Can not delete the Champion with id=" + id + "Maybe the champion is lost in the void!"})
+        }
+        else
+        {
+            res.send({message: "Champion has been sent to void!"})
+        }
+     })
+    .catch(err => { res.status(500).send( {message: "Error deleting champion with id=" +
+    id }); })
+
+});
