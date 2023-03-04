@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const req = require("express/lib/request");
+const champion = require("./models/champion");
 const app = express("express");
+
+const championRoutes = require("./routes/champion");
 
 require("dotenv-flow").config();
 
@@ -21,6 +24,8 @@ mongoose.connect
 ).catch(error => console.log("QwQ it is not working, DB sad:" + error));
 
 mongoose.connection.once('open', () => console.log('It is working, owo'));
+
+app.use("/api/champions", championRoutes);
 
 const PORT = process.env.PORT || 4000;
 
