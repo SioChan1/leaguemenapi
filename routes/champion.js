@@ -11,3 +11,19 @@ router.post("/", (req, res) => {
     .catch(err => { res.status(500).send( {message: err.message }); })
 
 });
+
+router.get("/", (req, res) => {
+
+    champion.find()
+    .then(data => { res.send(data); })
+    .catch(err => { res.status(500).send( {message: err.message }); })
+
+});
+
+router.get("/:id", (req, res) => {
+
+    champion.findById(req.params.id)
+    .then(data => { res.send(data); })
+    .catch(err => { res.status(500).send( {message: err.message }); })
+
+});
