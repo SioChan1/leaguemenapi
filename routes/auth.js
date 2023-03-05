@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 const { registerValidation } = require('../validation');
 
 router.post("/register", async (req, res) => {
@@ -11,6 +12,10 @@ router.post("/register", async (req, res) => {
     }
 
     const emailExist = await User.findOne({ email: req.body.email});
+
+    if (emailExist) {
+        return res.status(400).json({ error: "Email already taken"});
+    }
 
 });
 
