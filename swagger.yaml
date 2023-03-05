@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  title: MEN REST API League of Legends Champions
+  description: MongoDB ExpressJS NodeJS REST API, EASV WEBDEV mandatory assigment
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000/api/
+    description: Localhost development server 
+components:
+  securitySchemes:
+    ApiKeyAuth:        
+      type: apiKey
+      in: header       
+      name: auth-token
+
+  schemas:
+    Champion:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        Region:
+          type: string
+    
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        date:
+          type: string
+
+paths:
+
+  /user/register:
+    post:
+      summary: Register a new User
+      description: Register a new User in the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+
+      responses:
+        201:
+          description: User created succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  _id:
+                    type: string
+
+  /user/login:
+    post:
+      summary: Login a User
+      description: Login a User in order to get JWT token (auth-token)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      
+      responses:
+        200:
+          description: User logged in succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  data:
+                    type: string
+
+
+  /champions:
+    get:
+      summary: Retrieves a list of Champions
+      description: Retrieves a list of Champions as JSON objects.
+      responses:
+        200:
+          description: A list of champion JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Champion"
+    
+    post:
+      summary: Create a new Champion
+      description: Create a new Champion
+      security:
+        - ApiKeyAuth: []      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Champion"
+
+      responses:
+        201:
+          description: Champion created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Champion"
+  
+  /champions/{id}:
+    get:
+      summary: One of the league of legends Champions
+      description: Retrieves a specific Champion based on it id.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      responses:
+        200:
+          description: A Champion in the format of a JSON object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Champion"
+   
+    put:
+      summary: Updates a specific Champion
+      description: Updates a specific Champion based on it id
+      security:
+        - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Champion"
+
+      responses:
+        201:
+          description: Champion updated succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Champion"
+
+    delete:
+      summary: Deletes a specific Champion
+      description: Deletes a specific Champion based on it id
+      security:
+        - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string      
+
+      responses:
+        201:
+          description: Champion deleted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Champion"

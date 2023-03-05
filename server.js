@@ -5,6 +5,12 @@ const req = require("express/lib/request");
 const champion = require("./models/champion");
 const app = express("express");
 
+const swaggerUi = require('swagger-ui-express');
+const yaml = require('yamljs');
+
+const swaggerDefinition = yaml.load('./swagger.yaml');
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDefinition));
+
 const championRoutes = require("./routes/champion");
 const authRoutes = require("./routes/auth");
 
