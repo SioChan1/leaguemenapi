@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const user = require('../models/user');
+const User = require('../models/user');
 const { registerValidation } = require('../validation');
 
 router.post("/register", async (req, res) => {
@@ -9,6 +9,9 @@ router.post("/register", async (req, res) => {
     if (error) {
         return res.status(400).json({error: error.details[0].message});
     }
+
+    const emailExist = await User.findOne({ email: req.body.email});
+
 });
 
 router.post("/login", async (req, res) => {
