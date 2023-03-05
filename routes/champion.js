@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const champion = require("../models/champion");
+const { verifyToken } = require("../validation");
 
 module.exports = router;
 
-router.post("/", (req, res) => {
+router.post("/", verifyToken, (req, res) => {
     data = req.body;
 
     champion.insertMany(data)
@@ -48,7 +49,7 @@ router.put("/:id", (req, res) => {
 
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", verifyToken, (req, res) => {
 
     const id = req.params.id;
 
