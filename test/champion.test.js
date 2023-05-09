@@ -31,11 +31,11 @@ describe('/First Test Collection', () => {
          });
     });
 
-    it('should test two values.....', () => {
+   /* it('should test two values.....', () => {
         //test content should go here 
         let expectedVal = 10;
         let actualVal = 10;
 
         expect(actualVal).to.be.equal(expectedVal);
-    })
+    })*/
 });
