@@ -28,6 +28,9 @@ describe('/First Test Collection', () => {
         .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
+            console.log(res.body.message);
+            const actualVal = res.body.message;
+            expect(actualVal).to.be.equal('Welcome to pain');
         done();
          });
     });
