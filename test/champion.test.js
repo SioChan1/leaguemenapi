@@ -27,6 +27,7 @@ describe('/First Test Collection', () => {
         .get('/api/welcome')
         .end((err, res) => {
             res.should.have.status(200);
+            res.body.should.be.a('object');
         done();
          });
     });
