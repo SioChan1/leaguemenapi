@@ -4,7 +4,7 @@
   "description": "coursework",
   "main": "server.js",
   "scripts": {
-    "start-dev": "nodemon server.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon server.js",
     "test": "cross-env NODE_ENV=test mocha --exit",
     "start": "node server.js"
   },

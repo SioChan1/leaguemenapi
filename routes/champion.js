@@ -4,14 +4,14 @@ const { verifyToken } = require("../validation");
 
 module.exports = router;
 
-//router.post("/", verifyToken, (req, res) => {
+/*router.post("/", verifyToken, (req, res) => {
     data = req.body;
 
     champion.insertMany(data)
     .then(data => { res.send(data); })
     .catch(err => { res.status(500).send( {message: err.message }); })
 
-});
+});*/
 
 router.get("/", (req, res) => {
 

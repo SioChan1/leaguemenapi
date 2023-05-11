@@ -71,7 +71,7 @@ it ('should verify that we have 0 champions in the DB', (done) => {
 
 it ('should POST valid champion', (done) => {
 
-    let champion - {
+    let champion = {
         name: "Test Champion",
         describtion: "Test Champion Describtion",
         region: "Test Champion Region",
