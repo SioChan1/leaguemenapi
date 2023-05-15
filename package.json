@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start-dev": "cross-env NODE_ENV=development nodemon server.js",
-    "test": "cross-env NODE_ENV=test mocha --exit",
+    "test": "cross-env NODE_ENV=test mocha --recursive --exit",
     "start": "node server.js"
   },
   "author": "Renata",
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.0",
+    "nodemon": "^2.0.22",
     "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0"
   },

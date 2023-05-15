@@ -10,26 +10,7 @@ const server = require('../server');
 
 chai.use(chaiHttp);
 
-before((done) => {
-    Champion.deleteMany({}, function(err) {});
-    done();
-});
 
-after((done) => {
-    Champion.deleteMany({}, function(err) {});
-    done();
-});
-
-/*describe('/First Test Collection', function(){
-
-    it('should test two values', function() {
-        //test content should go here 
-        let expectedVal = 10;
-        let actualVal = 10;
-
-        expect(actualVal).to.be.equal(expectedVal);
-    })
-})*/
 
 describe('/First Test Collection', () => {
 
@@ -58,7 +39,7 @@ describe('/First Test Collection', () => {
     })*/
 });
 
-it ('should verify that we have 0 champions in the DB', (done) => {
+it('should verify that we have 0 champions in the DB', (done) => {
     chai.require(server)
     .get('/api/champions')
     .end((err, res) => {
@@ -82,6 +63,17 @@ it ('should POST valid champion', (done) => {
     .send(champion)
     .end((err, res) => {
         res.should.have.status(201);
+        done();
+    });
+});
+
+it('should verify that we have 1 champions in the DB', (done) => {
+    chai.require(server)
+    .get('/api/champions')
+    .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('array');
+        res.body.length.should.be.equal(1);
         done();
     });
 });
