@@ -40,7 +40,7 @@ describe('/First Test Collection', () => {
 });
 
 it('should verify that we have 0 champions in the DB', (done) => {
-    chai.require(server)
+    chai.request(server)
     .get('/api/champions')
     .end((err, res) => {
         res.should.have.status(200);
@@ -58,7 +58,7 @@ it ('should POST valid champion', (done) => {
         region: "Test Champion Region",
         cost: "600"
     }
-    chai.require(server)
+    chai.request(server)
     .post('/api/champions')
     .send(champion)
     .end((err, res) => {
@@ -68,7 +68,7 @@ it ('should POST valid champion', (done) => {
 });
 
 it('should verify that we have 1 champions in the DB', (done) => {
-    chai.require(server)
+    chai.request(server)
     .get('/api/champions')
     .end((err, res) => {
         res.should.have.status(200);

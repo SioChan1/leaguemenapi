@@ -8,13 +8,13 @@ const User = require('../models/user');
 
 
 beforeEach((done) => { 
-    Champion.deleteMany({}, function(err) {});
-    User.deleteMany({}, function(err) {});
+    Champion.deleteMany().then((err) => {});
+    User.deleteMany().then((err) => {});
     done();
 });
 
 afterEach((done) => {
-    User.deleteMany({}, function(err) {});
-    Champion.deleteMany({}, function(err) {});
+    User.deleteMany().then((err) => {});
+    Champion.deleteMany().then((err) => {});
     done();
 });
