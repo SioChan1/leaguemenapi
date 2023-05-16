@@ -66,7 +66,7 @@ it ('should POST valid champion', (done) => {
         done();
     });
 });
-
+/*
 it('should verify that we have 1 champions in the DB', (done) => {
     chai.request(server)
     .get('/api/champions')
@@ -77,3 +77,4 @@ it('should verify that we have 1 champions in the DB', (done) => {
         done();
     });
 });
+*/

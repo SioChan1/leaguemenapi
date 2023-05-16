@@ -32,6 +32,6 @@ jobs:
           npm intall
           npm test 
         env:
-          DBHOST: ${{ sercret:DBHOST }}
+          DBHOST: ${{ sercrets.DBHOST }}
           TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
-          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES-IN }}
+          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
