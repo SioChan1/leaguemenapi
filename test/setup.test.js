@@ -7,7 +7,7 @@ const User = require('../models/user');
 //clean up the database before and after each test
 
 
-before((done) => { 
+beforeEach((done) => { 
     Champion.deleteMany().then((err) => {});
     User.deleteMany().then((err) => {});
     done();
